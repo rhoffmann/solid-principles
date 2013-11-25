@@ -11,7 +11,6 @@ Object.prototype.mixin = function( module ) {
 };
 
 var Tags = function(){
-  this._tags = [];
 };
 
 Tags.prototype.listTags = function() {
@@ -24,10 +23,17 @@ Tags.prototype.listTags = function() {
 Tags.prototype.addTag = function(tag) {
   this._tags = this._tags || [];
   this._tags.push(tag);
+  this.publish && this.publish("tagAdded");
 };
 
 Tags.prototype.removeTag = function(tag) {
   this._tags = this._tags || [];
   var index = this._tags.indexOf(tag);
   this._tags.splice(index, 1);
+  this.publish && this.publish("tagRemoved");
 };
+
+Tags.prototype.countTags = function() {
+  "use strict";
+  return this._tags.length;
+}
