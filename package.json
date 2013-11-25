@@ -1,0 +1,25 @@
+{
+  "name": "solid-design-patterns",
+  "version": "0.0.1",
+  "description": "This is a repository following the tutorial about [SOLID design patterns](https://tutsplus.com/course/solid-design-patterns/) on nettuts",
+  "main": "server.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "coffee server.coffee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rhoffmann/solid-principles.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/rhoffmann/solid-principles/issues"
+  },
+  "engines": {
+      "node": "0.10.x"
+  },
+  "dependencies": {
+    "express": "~3.*"
+  }
+}
