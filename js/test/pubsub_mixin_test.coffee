@@ -1,4 +1,4 @@
-describe "counting tags", ->
+describe "PubSub Mixin and Counting tags", ->
 
   Class = null
 
@@ -6,6 +6,15 @@ describe "counting tags", ->
     Class = ->
     Class.mixin.apply Class, [ Tags ]
     Class.mixin.apply Class, [ PubSub ]
+
+  it "the mixed in object should have the method 'subscribe'", ->
+    object = new Class()
+    expect(object.subscribe).toBeDefined()
+
+  it "the mixed in object should have the method 'publish'", ->
+    object = new Class()
+    expect(object.publish).toBeDefined()
+
 
   it "prints the tag count via pubsub for each tag added", ->
     object = new Class()

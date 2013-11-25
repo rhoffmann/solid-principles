@@ -1,12 +1,22 @@
 (function() {
 
-  describe("counting tags", function() {
+  describe("PubSub Mixin and Counting tags", function() {
     var Class;
     Class = null;
     beforeEach(function() {
       Class = function() {};
       Class.mixin.apply(Class, [Tags]);
       return Class.mixin.apply(Class, [PubSub]);
+    });
+    it("the mixed in object should have the method 'subscribe'", function() {
+      var object;
+      object = new Class();
+      return expect(object.subscribe).toBeDefined();
+    });
+    it("the mixed in object should have the method 'publish'", function() {
+      var object;
+      object = new Class();
+      return expect(object.publish).toBeDefined();
     });
     it("prints the tag count via pubsub for each tag added", function() {
       var object, output;
