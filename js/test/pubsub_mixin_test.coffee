@@ -1,4 +1,4 @@
-describe "PubSub Mixin and Counting tags", ->
+describe "PubSub-Mixin and Counting tags", ->
 
   Class = null
 

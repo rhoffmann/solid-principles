@@ -1,5 +1,4 @@
 describe "TimedTask", ->
-
   it "has a title", ->
     expect(new TimedTask(title : "My First Task").title).toEqual("My First Task")
 

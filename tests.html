@@ -5,23 +5,30 @@
   <title>Jasmine Spec Runner</title>
 
   <link rel="stylesheet" type="text/css" href="js/vendor/jasmine/jasmine.css">
+
+  <script type="text/javascript" src="components/jquery/jquery.js"></script>
   <script type="text/javascript" src="js/vendor/jasmine/jasmine.js"></script>
   <script type="text/javascript" src="js/vendor/jasmine/jasmine-html.js"></script>
-
-  <script type="text/javascript" src="js/test/task_test.js"></script>
-  <script type="text/javascript" src="js/test/timed_task_test.js"></script>
-  <script type="text/javascript" src="js/test/tags_mixin_test.js"></script>
-  <script type="text/javascript" src="js/test/pubsub_mixin_test.js"></script>
+  <script type="text/javascript" src="components/jasmine.async/lib/jasmine.async.js"></script>
+  <script type="text/javascript" src="components/rsvp/rsvp.js"></script>
 
   <script type="text/javascript" src="js/lib/task.js"></script>
   <script type="text/javascript" src="js/lib/timed_task.js"></script>
   <script type="text/javascript" src="js/lib/tags_mixin.js"></script>
   <script type="text/javascript" src="js/lib/pubsub_mixin.js"></script>
+  <script type="text/javascript" src="js/lib/promises.js"></script>
+
+  <script type="text/javascript" src="js/test/task_test.js"></script>
+  <script type="text/javascript" src="js/test/timed_task_test.js"></script>
+  <script type="text/javascript" src="js/test/tags_mixin_test.js"></script>
+  <script type="text/javascript" src="js/test/pubsub_mixin_test.js"></script>
+  <script type="text/javascript" src="js/test/promises_test.js"></script>
+
 
   <script type="text/javascript">
     (function() {
       var jasmineEnv = jasmine.getEnv();
-      jasmineEnv.updateInterval = 1000;
+      jasmineEnv.updateInterval = 10;
 
       var htmlReporter = new jasmine.HtmlReporter();
 
