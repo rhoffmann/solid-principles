@@ -5,9 +5,27 @@
   <script src="components/jquery/jquery.js"></script>
   <script src="components/rsvp/rsvp.js"></script>
   <script src="js/lib/promises.js"></script>
+  <script src="js/lib/mixin.js"></script>
+  <script src="js/lib/pubsub.js"></script>
+  <script src="js/lib/liker.js"></script>
+
   <script src="js/lib/main.js"></script>
+
+  <script>
+    $(function(){
+      var liker = new Liker();
+    });
+  </script>
 </head>
+
 <body>
   <h1>This is a test</h1>
+
+  <div id="post">
+    <button id="like">1</button>
+    <ol id="like-count">
+    </ol>
+  </div>
+
 </body>
 </html>

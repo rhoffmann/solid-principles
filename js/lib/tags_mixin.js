@@ -2,13 +2,6 @@
  * Created by richard on 25.11.13.
  */
 
-Object.prototype.mixin = function( module ) {
-  for (method in module.prototype) {
-    if (module.prototype.hasOwnProperty(method)) {
-      this.prototype[method] = module.prototype[method];
-    }
-  }
-};
 
 var Tags = function(){
 };
@@ -34,6 +27,5 @@ Tags.prototype.removeTag = function(tag) {
 };
 
 Tags.prototype.countTags = function() {
-  "use strict";
   return this._tags.length;
 }

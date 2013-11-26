@@ -4,7 +4,6 @@
 
 
 var PubSub = function(){
-  "use strict";
 };
 
 PubSub.prototype.subscribe = function(topic, callback, context) {
@@ -15,10 +14,8 @@ PubSub.prototype.subscribe = function(topic, callback, context) {
 };
 
 PubSub.prototype.publish = function(topic) {
-
   this._topics = this._topics || {};
   this._topics[topic] = this._topics[topic] || [];
-
   this._topics[topic].forEach(function(subscription) {
     subscription.callback.call(subscription.context);
   });
