@@ -42,17 +42,17 @@ var Order = (function(){
     _updateDueDate: function() {
       var min = this._minDayLimit();
       this.dueDate = this.dueDate || new Date();
+      // FIXME: day calculation over month limits
       this.dueDate.setDate(new Date().getDate() + min);
     },
 
     _minDayLimit : function() {
-      return _.min( this.items, function(item){
-        return item.book.dayLimit;
-      });
+      return _.min( this._dayLimits() );
     },
+
     _dayLimits : function() {
       return this.items.map(function(item) {
-        return item.books.dayLimit;
+        return item.book.dayLimit;
       });
     }
 

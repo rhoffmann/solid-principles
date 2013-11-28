@@ -5,6 +5,7 @@
 var Book = function( title, dayLimit ) {
   "use strict";
   this.title = title || "no title";
+  this.dayLimit = dayLimit || 7;
 }
 
 Book.prototype.equals = function(book) {

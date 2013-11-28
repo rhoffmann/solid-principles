@@ -4,7 +4,7 @@
     describe("Order", function() {
       var book, user;
       user = new User("Richard");
-      book = new Book("Game of Thrones");
+      book = new Book("A Clash of Kings");
       it("belongs to a user", function() {
         return expect(new Order(user).user).toBe(user);
       });
@@ -14,9 +14,16 @@
         order.addBook(book);
         return expect(order.items[0].book).toBe(book);
       });
+      it("can be terminated", function() {
+        var order;
+        order = new FlexibleOrder(user);
+        order.addBook(book);
+        order.terminate();
+        return expect(order.status).toBe(Order.STATUS.complete);
+      });
       return describe("with two books with different day limits", function() {
         var second_book;
-        second_book = new Book("Feast for Crows", 3);
+        second_book = new Book("A Feast For Crows", 3);
         return it("sets the appropriate day limit", function() {
           var order;
           order = new Order();
@@ -31,14 +38,15 @@
         var difference_in_days, first_book, order, second_book, user;
         user = new User("Richard");
         order = new FlexibleOrder(user);
-        first_book = new Book("A Clash of Kings", 6);
-        second_book = new Book("A Feast For Crows", 3);
+        first_book = new Book("A Clash of Kings", 1);
+        second_book = new Book("A Feast For Crows", 2);
         order.addBook(first_book);
         order.addBook(second_book);
         order.process();
         order.terminateBook(second_book);
         difference_in_days = order.dueDate.getDate() - new Date().getDate();
-        return expect(difference_in_days).toBe(6);
+        console.log(difference_in_days);
+        return expect(difference_in_days).toBe(1);
       });
     });
   });

@@ -1,9 +1,11 @@
 describe "Book rental", ->
 
+#  Library = new Mock()
+
   describe "Order", ->
 
     user = new User("Richard")
-    book = new Book("Game of Thrones")
+    book = new Book("A Clash of Kings")
 
     it "belongs to a user", ->
       expect( new Order(user).user ).toBe user
@@ -13,8 +15,14 @@ describe "Book rental", ->
       order.addBook book
       expect(order.items[0].book).toBe book
 
+    it "can be terminated", ->
+      order = new FlexibleOrder(user)
+      order.addBook(book)
+      order.terminate()
+      expect(order.status).toBe(Order.STATUS.complete)
+
     describe "with two books with different day limits", ->
-      second_book = new Book("Feast for Crows", 3)
+      second_book = new Book("A Feast For Crows", 3)
 
       it "sets the appropriate day limit", ->
         order = new Order()
@@ -28,8 +36,8 @@ describe "Book rental", ->
     it "allows for some books to be returned prior to the end date", ->
       user = new User("Richard")
       order = new FlexibleOrder( user )
-      first_book = new Book("A Clash of Kings", 6)
-      second_book = new Book("A Feast For Crows", 3)
+      first_book = new Book("A Clash of Kings", 1)
+      second_book = new Book("A Feast For Crows", 2)
 
       order.addBook( first_book )
       order.addBook( second_book )
@@ -37,6 +45,7 @@ describe "Book rental", ->
       order.terminateBook( second_book )
 
       difference_in_days = order.dueDate.getDate() - new Date().getDate()
+      console.log difference_in_days
 
-      expect(difference_in_days).toBe(6)
+      expect(difference_in_days).toBe(1)
 

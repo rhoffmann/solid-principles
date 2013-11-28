@@ -5,12 +5,14 @@
 var Item = (function(){
   "use strict";
 
-  var Item = function( book, dayLimit ) {
+  var Item = function( book ) {
     this.book = book;
-    this.dayLimit = dayLimit || 7;
   }
 
   Item.prototype = {
+    clear: function() {
+      Library.incrementAvailabilityFor(this.book);
+    }
   };
 
   return Item;
