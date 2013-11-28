@@ -26,7 +26,7 @@
         second_book = new Book("A Feast For Crows", 3);
         return it("sets the appropriate day limit", function() {
           var order;
-          order = new Order();
+          order = new FlexibleOrder();
           order.addBook(book);
           order.addBook(second_book);
           return expect(order._minDayLimit()).toBe(3);
@@ -45,7 +45,6 @@
         order.process();
         order.terminateBook(second_book);
         difference_in_days = order.dueDate.getDate() - new Date().getDate();
-        console.log(difference_in_days);
         return expect(difference_in_days).toBe(1);
       });
     });

@@ -25,7 +25,7 @@ describe "Book rental", ->
       second_book = new Book("A Feast For Crows", 3)
 
       it "sets the appropriate day limit", ->
-        order = new Order()
+        order = new FlexibleOrder()
         order.addBook( book )
         order.addBook( second_book )
 
@@ -45,7 +45,6 @@ describe "Book rental", ->
       order.terminateBook( second_book )
 
       difference_in_days = order.dueDate.getDate() - new Date().getDate()
-      console.log difference_in_days
 
       expect(difference_in_days).toBe(1)
 
