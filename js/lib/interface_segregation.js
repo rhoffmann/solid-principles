@@ -15,23 +15,13 @@ var Student = function(name) {
 
 // split the interface, only implement the interfaces you will need
 
-var UserActions = function() {};
-
-UserActions.prototype = {
-  login : function(password) {},
-  resetPassword : function() {}
-};
-
-
 var UserLoginActions = function() {};
-
 UserLoginActions.prototype = {
   login : function(password) {}
 };
 
 
 var UserPasswordResetActions = function() {};
-
 UserPasswordResetActions.prototype = {
-  resetPassword : UserActions.prototype.resetPassword
+  resetPassword : function() {}
 };
