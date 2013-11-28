@@ -16,7 +16,7 @@ describe "Book rental", ->
       expect(order.items[0].book).toBe book
 
     it "can be terminated", ->
-      order = new FlexibleOrder(user)
+      order = new Order(user)
       order.addBook(book)
       order.terminate()
       expect(order.status).toBe(Order.STATUS.complete)
@@ -25,7 +25,7 @@ describe "Book rental", ->
       second_book = new Book("A Feast For Crows", 3)
 
       it "sets the appropriate day limit", ->
-        order = new FlexibleOrder()
+        order = new Order()
         order.addBook( book )
         order.addBook( second_book )
 

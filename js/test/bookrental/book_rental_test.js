@@ -16,7 +16,7 @@
       });
       it("can be terminated", function() {
         var order;
-        order = new FlexibleOrder(user);
+        order = new Order(user);
         order.addBook(book);
         order.terminate();
         return expect(order.status).toBe(Order.STATUS.complete);
@@ -26,7 +26,7 @@
         second_book = new Book("A Feast For Crows", 3);
         return it("sets the appropriate day limit", function() {
           var order;
-          order = new FlexibleOrder();
+          order = new Order();
           order.addBook(book);
           order.addBook(second_book);
           return expect(order._minDayLimit()).toBe(3);
