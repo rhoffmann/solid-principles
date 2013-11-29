@@ -33,7 +33,7 @@
         });
       });
     });
-    return describe("FlexibleOrder", function() {
+    describe("FlexibleOrder", function() {
       return it("allows for some books to be returned prior to the end date", function() {
         var difference_in_days, first_book, order, second_book, user;
         user = new User("Richard");
@@ -46,6 +46,23 @@
         order.terminateBook(second_book);
         difference_in_days = order.dueDate.getDate() - new Date().getDate();
         return expect(difference_in_days).toBe(1);
+      });
+    });
+    return describe("Stats", function() {
+      var first_book, order, second_book, stats;
+      stats = null;
+      order = new Order();
+      first_book = new Book("A Clash of Kings");
+      second_book = new Book("A Feast For Crows");
+      beforeEach(function() {
+        stats = new Stats();
+        order.addBook(first_book);
+        return spyOn(Library, "allOrders").andReturn([order]);
+      });
+      return it("retrieves the currently rented books", function() {
+        var orders;
+        orders = Library.allOrders();
+        return expect(stats.rentedBooks(orders)).toEqual([first_book]);
       });
     });
   });

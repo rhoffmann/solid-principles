@@ -48,3 +48,17 @@ describe "Book rental", ->
 
       expect(difference_in_days).toBe(1)
 
+  describe "Stats", ->
+    stats = null
+    order = new Order()
+    first_book = new Book("A Clash of Kings")
+    second_book = new Book("A Feast For Crows")
+
+    beforeEach ->
+      stats = new Stats()
+      order.addBook(first_book)
+      spyOn(Library, "allOrders").andReturn([order])
+
+    it "retrieves the currently rented books", ->
+      orders = Library.allOrders()
+      expect(stats.rentedBooks(orders)).toEqual([first_book])

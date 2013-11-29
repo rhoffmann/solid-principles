@@ -26,6 +26,11 @@ var Library = {
     item.available++;
   },
 
+  allOrders : function(){
+    "use strict";
+    // TODO!
+  },
+
   _findInStock : function(book) {
     "use strict";
     var found = null;
